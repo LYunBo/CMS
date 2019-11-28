@@ -14,3 +14,9 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/login', "Admin\LoginController@login");
+
+Route::group(['middleware'=>'login'], function () {
+	Route::get('/admin', "Admin\IndexController@index");
+});
