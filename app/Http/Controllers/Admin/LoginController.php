@@ -6,6 +6,6 @@ use App\Http\Controllers\Controller as Login;
 class LoginController extends Login {
 	public function login ()
 	{
-		echo "login";
+		return view('admin.login.login');
 	}
 }
