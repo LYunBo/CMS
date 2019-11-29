@@ -15,8 +15,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/login', "Admin\LoginController@login");
-
+Route::get('/admin_login', "Admin\LoginController@login");
+Route::post('/admin_dologin', "Admin\LoginController@dologin");
 Route::group(['middleware'=>'login'], function () {
-	Route::get('/admin', "Admin\IndexController@index");
+	Route::get('/admin_index', "Admin\IndexController@index");
 });
