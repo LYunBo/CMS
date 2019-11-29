@@ -1,22 +1,26 @@
 <?php
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller as Login;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\AdminUserRequest;
 use Illuminate\Http\Request;
 
-class LoginController extends Login {
+class LoginController extends Controller
+{
 	public function login ()
 	{
+		session()->pull('admin_user');
 		return view('admin.login.index');
 	}
 
-	public function dologin(Request $request)
+	public function dologin(AdminUserRequest $request)
 	{
 		$post = $request->except('_token');
 
 		// dump($post);
 		if (count($post) > 0) {
-			return redirect('success')->with('/admin_index');
+			session(['admin_user'=>1]);
+			return redirect('/admin_index')->with('success','登录成功');
 		} else {
 
 		}
