@@ -17,6 +17,9 @@ Route::get('/', function () {
 
 Route::get('/admin_login', "Admin\LoginController@login");
 Route::post('/admin_dologin', "Admin\LoginController@dologin");
+
+// Route::match(['get','post'], '/admin_login', "Admin\LoginController@login");
+
 Route::group(['middleware'=>'login'], function () {
 	Route::get('/admin_index', "Admin\IndexController@index");
 });

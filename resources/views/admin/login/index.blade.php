@@ -1,58 +1,49 @@
-@extends('admin.public.public')
-@section('body')
-<body class="login-bg">
-
-<div class="login layui-anim layui-anim-up">
-    <div class="message">管理登录</div>
-    <div id="darkbannerwrap"></div>
-    
-    <form method="post" class="layui-form" action="/admin_dologin">
-    	{{csrf_field()}}
-      <input name="username" placeholder="用户名"  type="text" lay-verify="required" class="layui-input" >
-      <hr class="hr15">
-      <input name="password" lay-verify="required" placeholder="密码"  type="password" class="layui-input">
-      <hr class="hr15">
-      <input name="code" lay-verify="required" placeholder="验证码"  type="text" class="layui-input">
-      <img src="{{captcha_src()}}" style="cursor: pointer;vertical-align: middle;height: 50px;outline: none;"  onclick="this.src='{{captcha_src()}}'+Math.random()">
-      <hr class="hr15">
-      <input value="登录" lay-submit lay-filter="login" style="width:100%;" onclick="ajax_submit(this)" type="submit">
-      <hr class="hr20" >
+@include('admin.tpl.meta')
+<link href="/admin/static/h-ui.admin/css/H-ui.login.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<input type="hidden" id="TenantId" name="TenantId" value="" />
+<!-- <div class="header"></div> -->
+<div class="loginWraper">
+  <div id="loginform" class="loginBox">
+    <form class="form form-horizontal" action="/admin_dologin" method="post">
+      {{csrf_field()}}
+      <div class="row cl">
+        <label class="form-label col-xs-3"><i class="Hui-iconfont">&#xe60d;</i></label>
+        <div class="formControls col-xs-8">
+          <input id="" name="username" type="text" placeholder="账户" class="input-text size-L">
+        </div>
+      </div>
+      <div class="row cl">
+        <label class="form-label col-xs-3"><i class="Hui-iconfont">&#xe60e;</i></label>
+        <div class="formControls col-xs-8">
+          <input id="" name="password" type="password" placeholder="密码" class="input-text size-L">
+        </div>
+      </div>
+      <div class="row cl">
+        <div class="formControls col-xs-8 col-xs-offset-3">
+          <input class="input-text size-L" name="code" type="text" placeholder="验证码" style="width:150px;">
+          <img src="{{captcha_src()}}"><a id="kanbuq" href="javascript:;"  onclick="$(this).prev('img')[0].src='{{captcha_src()}}'+Math.random()">看不清，换一张</a> </div>
+      </div>
+      <!-- <div class="row cl">
+        <div class="formControls col-xs-8 col-xs-offset-3">
+          <label for="online">
+            <input type="checkbox" name="online" id="online" value="">
+            使我保持登录状态</label>
+        </div>
+      </div> -->
+      <div class="row cl">
+        <div class="formControls col-xs-8 col-xs-offset-3">
+          <input name="" type="submit" class="btn btn-success radius size-L" value="&nbsp;登&nbsp;&nbsp;&nbsp;&nbsp;录&nbsp;">
+          <input name="" type="reset" class="btn btn-default radius size-L" value="&nbsp;取&nbsp;&nbsp;&nbsp;&nbsp;消&nbsp;">
+        </div>
+      </div>
     </form>
+  </div>
 </div>
-
-<script>
-    $(function  () {
-        layui.use('form', function(){
-          var form = layui.form;
-          // layer.msg('玩命卖萌中', function(){
-          //   //关闭后的操作
-          //   });
-          //监听提交
-          form.on('submit(/admin_dologin)', function(data){
-            // alert(888)
-            layer.msg(JSON.stringify(data.field),function(){
-                location.href='index.html'
-            });
-            return false;
-          });
-        });
-    })
-
-    function ajax_submit() {
-
-    }
-</script>
-<!-- 底部结束 -->
-<script>
-//百度统计可去掉
-var _hmt = _hmt || [];
-(function() {
-  var hm = document.createElement("script");
-  hm.src = "https://hm.baidu.com/hm.js?b393d153aeb26b46e9431fabaf0f6190";
-  var s = document.getElementsByTagName("script")[0]; 
-  s.parentNode.insertBefore(hm, s);
-})();
-</script>
+<div class="footer">Copyright LybCms by H-ui.admin v3.1</div>
+@include('admin.tpl.footer')
+<!--此乃百度统计代码，请自行删除-->
 </body>
-@endsection
-@section('title','后台登录')
+</html>
+@section('title','后台首页')

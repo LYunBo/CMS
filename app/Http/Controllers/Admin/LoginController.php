@@ -7,14 +7,20 @@ use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
+	/*public function __construct()
+	{
+		$this->middleware('login');
+	}*/
+
 	public function login ()
 	{
 		session()->pull('admin_user');
 		return view('admin.login.index');
 	}
 
-	public function dologin(AdminUserRequest $request)
+	public function dologin(Request $request)
 	{
+		dump($request->post());
 		$post = $request->except('_token');
 
 		// dump($post);

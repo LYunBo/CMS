@@ -24,18 +24,18 @@ class AdminUserRequest extends FormRequest
     public function rules()
     {
         return [
-            'username' => 'require',
-            'password' => 'require|confirmed',
-            'code' => 'require|captcha'
+            'username' => 'required',
+            'password' => 'required|confirmed',
+            'code' => 'required'
         ];
     }
 
     public function message()
     {
         return [
-            'username.require' => '用户名不能为空',
-            'password.require' => '密码不能为空',
-            'code.require' => '验证码不能为空',
+            'username.required' => '用户名不能为空',
+            'password.required' => '密码不能为空',
+            'code.required' => '验证码不能为空',
             'code.captcha' => '验证码不正确'
         ];
     }

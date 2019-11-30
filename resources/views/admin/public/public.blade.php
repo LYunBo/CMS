@@ -1,32 +1,35 @@
-<!doctype html>
-<html class="x-admin-sm">
-    <head>
-        <meta charset="UTF-8">
-        <title>@yield('title')</title>
-        <meta name="renderer" content="webkit|ie-comp|ie-stand">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" />
-        <meta http-equiv="Cache-Control" content="no-siteapp" />
-        <link rel="stylesheet" href="/admin/css/font.css">
-        <link rel="stylesheet" href="/admin/css/login.css">
-        <link rel="stylesheet" href="/admin/css/xadmin.css">
-        <!-- <link rel="stylesheet" href="./css/theme5.css"> -->
-        <script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
-        <script src="/admin/lib/layui/layui.js" charset="utf-8"></script>
-        <script type="text/javascript" src="/admin/js/xadmin.js"></script>
-        <!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
-        <!--[if lt IE 9]>
-          <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
-          <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
-        <![endif]-->
-        <script>
-            // 是否开启刷新记忆tab功能
-            // var is_remember = false;
-        </script>
-    </head>
-    @section('body')
-    @show
-    <script>
-    
-    </script>
+@include('admin.tpl.meta')
+@include('admin.public.header')
+<body>
+@include('admin.public.menu')
+<div class="dislpayArrow hidden-xs"><a class="pngfix" href="javascript:void(0);" onClick="displaynavbar(this)"></a></div>
+<section class="Hui-article-box">
+    <div id="Hui-tabNav" class="Hui-tabNav hidden-xs">
+        <div class="Hui-tabNav-wp">
+            <ul id="min_title_list" class="acrossTab cl">
+                <li class="active">
+                    <span title="我的桌面" data-href="/admin_index">我的桌面</span>
+                    <em></em>
+                </li>
+            </ul>
+        </div>
+        <div class="Hui-tabNav-more btn-group"><a id="js-tabNav-prev" class="btn radius btn-default size-S" href="javascript:;"><i class="Hui-iconfont">&#xe6d4;</i></a><a id="js-tabNav-next" class="btn radius btn-default size-S" href="javascript:;"><i class="Hui-iconfont">&#xe6d7;</i></a></div>
+    </div>
+    <div id="iframe_box" class="Hui-article">
+        <div class="show_iframe">
+            <div style="display:none" class="loading"></div>    
+            @section('content')
+            @show
+        </div>
+    </div>
+</section>
+
+<div class="contextMenu" id="Huiadminmenu">
+    <ul>
+        <li id="closethis">关闭当前 </li>
+        <li id="closeall">关闭全部 </li>
+    </ul>
+</div>
+@include('admin.tpl.footer')
+</body>
 </html>
