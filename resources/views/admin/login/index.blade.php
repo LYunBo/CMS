@@ -5,6 +5,14 @@
 <input type="hidden" id="TenantId" name="TenantId" value="" />
 <!-- <div class="header"></div> -->
 <div class="loginWraper">
+@if(count($errors)>0)
+  @foreach($errors->all() as $error)
+  <div class="Huialert Huialert-danger"><i class="Hui-iconfont">&#xe6a6;</i>{{$error}}</div>
+  @endforeach
+@endif
+@if(session('error'))
+  <div class="Huialert Huialert-error"><i class="Hui-iconfont">&#xe6a6;</i>{{session('error')}}</div>
+@endif
   <div id="loginform" class="loginBox">
     <form class="form form-horizontal" action="/admin_dologin" method="post">
       {{csrf_field()}}

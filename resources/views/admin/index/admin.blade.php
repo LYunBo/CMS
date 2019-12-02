@@ -1,4 +1,7 @@
 @extends('admin.public.public')
+@if(session('success'))
+	<div class="Huialert Huialert-success"><i class="Hui-iconfont">&#xe6a6;</i>{{session('success')}}</div>
+@endif
 @section('content')
 	<div class="page-container">
 	<p class="f-20 text-success">欢迎使用H-ui.admin <span class="f-14">v3.1</span>后台模版！</p>

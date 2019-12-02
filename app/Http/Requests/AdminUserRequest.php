@@ -25,12 +25,12 @@ class AdminUserRequest extends FormRequest
     {
         return [
             'username' => 'required',
-            'password' => 'required|confirmed',
-            'code' => 'required'
+            'password' => 'required',
+            'code' => 'required|captcha'
         ];
     }
 
-    public function message()
+    public function messages()
     {
         return [
             'username.required' => '用户名不能为空',
