@@ -14,7 +14,7 @@
   <div class="Huialert Huialert-error"><i class="Hui-iconfont">&#xe6a6;</i>{{session('error')}}</div>
 @endif
   <div id="loginform" class="loginBox">
-    <form class="form form-horizontal" action="/admin_dologin" method="post">
+    <form class="form form-horizontal" action="/admin_login" method="post">
       {{csrf_field()}}
       <div class="row cl">
         <label class="form-label col-xs-3"><i class="Hui-iconfont">&#xe60d;</i></label>

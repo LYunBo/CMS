@@ -15,10 +15,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/admin_login', "Admin\LoginController@login");
-Route::post('/admin_dologin', "Admin\LoginController@dologin");
+/*Route::get('/admin_login', "Admin\LoginController@login")->name('Admin.login');
+Route::post('/admin_dologin', "Admin\LoginController@dologin");*/
 
-// Route::match(['get','post'], '/admin_login', "Admin\LoginController@login");
+Route::match(['get','post'], '/admin_login', "Admin\LoginController@login");
 
 Route::group(['middleware'=>'login'], function () {
 	
