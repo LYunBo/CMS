@@ -1,5 +1,5 @@
 @include('admin.tpl.meta')
-<link href="/admin/static/h-ui.admin/css/H-ui.login.css" rel="stylesheet" type="text/css" />
+<link href="/static/admin/static/h-ui.admin/css/H-ui.login.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
 <input type="hidden" id="TenantId" name="TenantId" value="" />
@@ -14,7 +14,7 @@
   <div class="Huialert Huialert-error"><i class="Hui-iconfont">&#xe6a6;</i>{{session('error')}}</div>
 @endif
   <div id="loginform" class="loginBox">
-    <form class="form form-horizontal" action="/admin_login" method="post">
+    <form class="form form-horizontal" action="/admin/login" method="post">
       {{csrf_field()}}
       <div class="row cl">
         <label class="form-label col-xs-3"><i class="Hui-iconfont">&#xe60d;</i></label>

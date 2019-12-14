@@ -15,7 +15,7 @@ class LoginMiddleware {
             return $next($request);
         }else{
             //跳转到登录界面
-            return redirect("/admin_login");
+            return redirect()->route('adminLogin');
         }
     }
 }

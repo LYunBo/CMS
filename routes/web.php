@@ -17,12 +17,14 @@ Route::get('/', function () {
 
 /*Route::get('/admin_login', "Admin\LoginController@login")->name('Admin.login');
 Route::post('/admin_dologin', "Admin\LoginController@dologin");*/
+Route::prefix('admin')->group(function () {
+	Route::match(['get','post'], '/login', "Admin\LoginController@login")->name('adminLogin');
 
-Route::match(['get','post'], '/admin_login', "Admin\LoginController@login");
+	Route::group(['middleware'=>'login'], function () {
+		
+		Route::get('/index', "Admin\IndexController@index")->name('adminIndex');
 
-Route::group(['middleware'=>'login'], function () {
-	
-	Route::get('/admin_index', "Admin\IndexController@index");
-
-	Route::get('admin_loginOut', "Admin\LoginController@loginOut");
+		Route::get('loginOut', "Admin\LoginController@loginOut");
+	});
 });
+	

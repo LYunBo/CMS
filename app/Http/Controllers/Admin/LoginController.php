@@ -35,7 +35,7 @@ class LoginController extends Controller
 						return back()->with('error', '请填写对应的用户名及密码');
 					}
 					session(['admin_user'=>md5($user['id'].$user['username']), 'adminUser'=>$user['username']]);
-					return redirect('/admin_index')->with('success', '登录成功');
+					return redirect()->route('adminIndex')->with('success', '登录成功');
 				} else {
 					return back()->with('error', '请填写对应的用户名及密码');
 				}
@@ -72,6 +72,6 @@ class LoginController extends Controller
 	public function loginOut(Request $request)
 	{
 		$request->session()->flush();
-		return redirect('/admin_index');
+		return redirect()->route('adminLogin');
 	}
 }
