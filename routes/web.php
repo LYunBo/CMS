@@ -17,7 +17,9 @@ Route::get('/', function () {
 
 /*Route::get('/admin_login', "Admin\LoginController@login")->name('Admin.login');
 Route::post('/admin_dologin', "Admin\LoginController@dologin");*/
-Route::prefix('admin')->group(function () {
+Route::group([
+	'prefix' => 'admin',
+], function () {
 	Route::match(['get','post'], '/login', "Admin\LoginController@login")->name('adminLogin');
 
 	Route::group(['middleware'=>'login'], function () {
