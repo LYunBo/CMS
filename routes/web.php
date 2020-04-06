@@ -17,6 +17,7 @@ Route::get('/', function () {
 
 /*Route::get('/admin_login', "Admin\LoginController@login")->name('Admin.login');
 Route::post('/admin_dologin', "Admin\LoginController@dologin");*/
+Route::get('/admin', "Admin\IndexController@index")->middleware('login');
 Route::prefix('admin')->group(function () {
 	Route::match(['get','post'], '/login', "Admin\LoginController@login")->name('adminLogin');
 
@@ -24,7 +25,7 @@ Route::prefix('admin')->group(function () {
 		
 		Route::get('/index', "Admin\IndexController@index")->name('adminIndex');
 
-		Route::get('loginOut', "Admin\LoginController@loginOut");
+		Route::get('/loginOut', "Admin\LoginController@loginOut");
 	});
 });
 	

@@ -1,12 +1,13 @@
 <?php
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\Admin\CommonController;
 
 use Illuminate\Support\Facades\DB;
 
-class IndexController extends Controller {
-	public function index()
+class IndexController extends CommonController {
+
+    public function index()
 	{
 		$sysinfo = $this->system();
 		return view('admin.index.admin', ['sysinfo'=>$sysinfo]);
